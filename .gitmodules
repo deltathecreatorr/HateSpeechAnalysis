@@ -1,0 +1,3 @@
+[submodule "libs/twikit"]
+	path = libs/twikit
+	url = https://github.com/d60/twikit.git
