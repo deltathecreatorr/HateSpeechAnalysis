@@ -1,7 +1,14 @@
 import pandas as pd
+import os
+import sys
+
+current_dir = os.path.dirname(os.path.abspath(__file__))
+twikit_path = os.path.abspath(os.path.join(current_dir, '..', 'libs', 'twikit'))
+sys.path.insert(0, twikit_path)
+
 from twikit import Client
 import asyncio
-import os
+
 
 def getRedditDataframe() -> pd.DataFrame:
     """
