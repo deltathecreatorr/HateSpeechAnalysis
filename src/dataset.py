@@ -26,7 +26,7 @@ def getRedditDataframe() -> pd.DataFrame:
     df = pd.read_csv('dataset/reddit_opinion_PSE_ISR.csv', usecols = ["author_name", "post_id", "comment_id", "self_text", "created_time", "user_total_karma", "user_account_created_time"])
     return df
 
-def getTwitterDataframe(filepath: str, search_query: str, max_tweets: int = 5000) -> None:
+def getTwitterDataset(filepath: str, search_query: str, max_tweets: int = 5000) -> None:
     """
     Scrape Twitter Data using TwiKit library. 
     The tweets will be stored into a CSV to create my own dataset,
@@ -132,8 +132,14 @@ def getTwitterDataframe(filepath: str, search_query: str, max_tweets: int = 5000
     
     asyncio.run(main())
 
-def createTwitterDataset():
-    """"""
+def createTwitterDataset() -> None:
+    """
+    Creates a Twitter csv file containing tweets related to the keywords from the Israel-Palestine conflict.
+    Arguments:
+        None
+    Returns:    
+        None, but the function will create multiple CSV files in the dataset/ directory, each file will be named twitter_{event_name}_{data_type}.csv where event_name is one of the events from the
+    """
     base_keywords = ["Israel", "Palestine", "Gaza", "Hamas"]
     base_query = " OR ".join(base_keywords)
 
@@ -160,21 +166,22 @@ def createTwitterDataset():
 
         baseline_query = f"({base_query}) since:{before_date} until:{after_start} lang:en"
         print(f"--- Scraping BASELINE for {event} ---")
-        getTwitterDataframe(f"dataset/twitter_{event}_BASELINE.csv", baseline_query, max_tweets=1000)
+        getTwitterDataset(f"dataset/twitter_{event}_BASELINE.csv", baseline_query, max_tweets=1000)
 
         event_query_str = " OR ".join([f'"{k}"' if " " in k else k for k in keywords])
         event_query = f"({base_query} OR {event_query_str}) since:{after_start} until:{until_date} lang:en"
 
         print(f"--- Scraping EVENT data for {event} ---")
-        getTwitterDataframe(f"dataset/twitter_{event}_EVENT.csv", event_query, max_tweets=2000)
+        getTwitterDataset(f"dataset/twitter_{event}_EVENT.csv", event_query, max_tweets=2000)
 
         print(f"Finished collecting tweets for {event}")
         time.sleep(400)
 
-    
+def getTwitterDataframe(filepath: str) -> pd.DataFrame:
+    df = pd.read_csv(filepath, use_cols = ['tweet_id', 'user_id', 'username', 'text', 'created_at', ])
+    return df
 
-if __name__ == "__main__":
-    createTwitterDataset()
+    
     
 
 
