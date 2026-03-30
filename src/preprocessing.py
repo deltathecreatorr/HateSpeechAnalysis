@@ -7,6 +7,7 @@ from nltk.tokenize import word_tokenize, TweetTokenizer
 
 nltk.download('stopwords')
 nltk.download('punkt')
+nltk.download('punkt_tab')
 stop_words = set(stopwords.words('english'))
 
 tweet_tokenizer = TweetTokenizer(preserve_case=False, strip_handles=True)
