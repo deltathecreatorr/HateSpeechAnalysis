@@ -2,3 +2,4 @@ pandas
 twikit
 asyncio
 dotenv
+nltk

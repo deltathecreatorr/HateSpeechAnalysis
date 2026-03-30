@@ -206,5 +206,6 @@ marimo/_static/
 marimo/_lsp/
 __marimo__/
 
-dataset/
+dataset/reddit_opinion_PSE_ISR.csv
+dataset - Copy/
 cookies.json
