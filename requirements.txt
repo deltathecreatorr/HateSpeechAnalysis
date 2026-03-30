@@ -3,3 +3,4 @@ twikit
 asyncio
 dotenv
 nltk
+scipy
