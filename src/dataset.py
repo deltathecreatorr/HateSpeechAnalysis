@@ -35,7 +35,7 @@ def getRedditDataframe() -> None:
     df = pd.read_csv('dataset/reddit_opinion_PSE_ISR.csv', usecols = ["author_name", "post_id", "comment_id", "self_text", "created_time", "user_total_karma", "user_account_created_time", "subreddit"])
 
     df['created_time'] = pd.to_datetime(df['created_time'], errors='coerce')
-    df.dropna(subset=['created_time'])
+    df = df.dropna(subset=['created_time'])
 
     output_dir = 'dataset/'
 
@@ -198,7 +198,7 @@ def createTwitterDataset() -> None:
         time.sleep(400)
 
 def getTwitterDataframe(filepath: str) -> pd.DataFrame:
-    df = pd.read_csv(filepath, use_cols = ['tweet_id', 'user_id', 'username', 'text', 'created_at', ])
+    df = pd.read_csv(filepath, usecols = ['tweet_id', 'user_id', 'username', 'text', 'created_at', ])
     return df
     
     

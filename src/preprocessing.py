@@ -17,7 +17,7 @@ def clean_text(text) -> str:
     """
     text = text.lower()
 
-    text = re.sub(r'http\S|www\S+|https\S+', '', text, flags=re.MULTILINE)
+    text = re.sub(r'http\S+|www\S+|https\S+', '', text, flags=re.MULTILINE)
     text = re.sub(r'@\w+', '', text)
 
     text = re.sub(r'[^a-z\s]', '', text)
@@ -37,10 +37,12 @@ def preprocessRedditDataframe(df: pd.DataFrame) -> pd.DataFrame:
     """
     bot_list = ['automoderator', 'suggestsizebot', 'helperbot_']
     df = df[~df['author_name'].str.lower().isin(bot_list)]
+    df = df[~df['self_text'].str.contains("action was performed automatically", case=False, na=False)]
+
     df = df.dropna(subset=['self_text'])
     df = df[df['self_text'].str.strip() != '']
-
     df['self_text'] = df['self_text'].apply(clean_text)
+    df = df[df['self_text'].str.strip() != '']
 
     df['author_name'] = df['author_name'].astype(str).str.lower().str.strip()
     return df
@@ -60,6 +62,8 @@ def preprocessTwitterDataframe(df: pd.DataFrame) -> pd.DataFrame:
     df['text'] = df['text'].apply(clean_text)
     df = df[df['text'].str.strip() != '']
 
+    df['created_at'] = pd.to_datetime(df['created_at'])
+    df['created_at'] = df['created_at'].dt.tz_localize(None)
     df['username'] = df['username'].astype(str).str.lower().str.strip()
     
     return df
