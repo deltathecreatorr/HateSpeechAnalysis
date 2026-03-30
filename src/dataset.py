@@ -13,18 +13,46 @@ import time
 
 load_dotenv()
 
+event_dates = {
+    "October_7": {"since":"2023-10-06", "until":"2023-10-12"},
+    "Al-Ahli_Hospital": {"since":"2023-10-16", "until":"2023-10-22"},
+    "Iran_Strikes": {"since":"2024-09-30", "until":"2024-10-06"},
+    "ICC_Arrest": {"since":"2024-11-20", "until":"2024-11-26"},
+    "Doha_Attack": {"since":"2025-09-08", "until":"2025-09-14"}
+}
 
-def getRedditDataframe() -> pd.DataFrame:
+
+def getRedditDataframe() -> None:
     """
     Returns the CSV Reddit file data as a Pandas Dataframe.
 
     Arguments:
         None
     Returns:
-        reddit_dataset: A pandas Dataframe containing the Reddit dataset with the following columns: "author_name", "post_id", "comment_id", "self_text", "created_time", "user_total_karma", "user_account_created_time" the dataframe can be accessed by calling reddit_dataset['column_name'] where column_name is one of the columns mentioned above.
+        None, but the function will create multiple CSV files in the dataset/ directory, each file will be named reddit_{event_name}_{data_type}.csv where event_name is one of the events from the
     """
-    df = pd.read_csv('dataset/reddit_opinion_PSE_ISR.csv', usecols = ["author_name", "post_id", "comment_id", "self_text", "created_time", "user_total_karma", "user_account_created_time"])
-    return df
+    
+    df = pd.read_csv('dataset/reddit_opinion_PSE_ISR.csv', usecols = ["author_name", "post_id", "comment_id", "self_text", "created_time", "user_total_karma", "user_account_created_time", "subreddit"])
+
+    df['created_time'] = pd.to_datetime(df['created_time'], errors='coerce')
+    df.dropna(subset=['created_time'])
+
+    output_dir = 'dataset/'
+
+    for event, dates in event_dates.items():
+        since_dt = pd.to_datetime(dates['since'])
+        event_dt = since_dt + pd.Timedelta(days=1)
+        until_dt = pd.to_datetime(dates['until'])
+
+        baseline_mask = (df['created_time'] >= since_dt) & (df['created_time'] < event_dt)
+        baseline_df = df[baseline_mask]
+        base_filename = f"reddit_{event}_BASELINE.csv"
+        baseline_df.to_csv(os.path.join(output_dir, base_filename), index=False)
+
+        event_mask = (df['created_time'] >= event_dt) & (df['created_time'] <= until_dt)
+        event_df = df[event_mask]
+        event_filename = f"reddit_{event}_EVENT.csv"
+        event_df.to_csv(os.path.join(output_dir, event_filename), index=False)
 
 def getTwitterDataset(filepath: str, search_query: str, max_tweets: int = 5000) -> None:
     """
@@ -151,14 +179,6 @@ def createTwitterDataset() -> None:
         "Doha_Attack": ["Doha", "Qatar", "targeted strike", "hotel attack", "assassination", "bombing", "Hamas leadership", "Doha explosion"]
     }
 
-    event_dates = {
-        "October_7": {"since":"2023-10-06", "until":"2023-10-12"},
-        "Al-Ahli_Hospital": {"since":"2023-10-16", "until":"2023-10-22"},
-        "Iran_Strikes": {"since":"2024-09-30", "until":"2024-10-06"},
-        "ICC_Arrest": {"since":"2024-11-20", "until":"2024-11-26"},
-        "Doha_Attack": {"since":"2025-09-08", "until":"2025-09-14"}
-    }
-
     for event, keywords in specific_keywords_dict.items():
         before_date = event_dates[event]["since"]
         after_start = (pd.to_datetime(before_date) + pd.Timedelta(days=1)).strftime('%Y-%m-%d')
@@ -180,9 +200,10 @@ def createTwitterDataset() -> None:
 def getTwitterDataframe(filepath: str) -> pd.DataFrame:
     df = pd.read_csv(filepath, use_cols = ['tweet_id', 'user_id', 'username', 'text', 'created_at', ])
     return df
-
     
     
+if __name__ == "__main__":
+    getRedditDataframe()
 
 
 

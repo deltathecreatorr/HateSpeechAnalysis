@@ -35,10 +35,14 @@ def preprocessRedditDataframe(df: pd.DataFrame) -> pd.DataFrame:
     Returns:
         A pandas Dataframe containing the preprocessed Reddit dataset with the following columns: "author_name", "post_id", "comment_id", "self_text", "created_time", "user_total_karma", "user_account_created_time" the dataframe can be accessed by calling reddit_dataset['column_name'] where column_name is one of the columns mentioned above.
     """
+    bot_list = ['automoderator', 'suggestsizebot', 'helperbot_']
+    df = df[~df['author_name'].str.lower().isin(bot_list)]
     df = df.dropna(subset=['self_text'])
     df = df[df['self_text'].str.strip() != '']
 
     df['self_text'] = df['self_text'].apply(clean_text)
+
+    df['author_name'] = df['author_name'].astype(str).str.lower().str.strip()
     return df
 
 def preprocessTwitterDataframe(df: pd.DataFrame) -> pd.DataFrame:
@@ -55,5 +59,7 @@ def preprocessTwitterDataframe(df: pd.DataFrame) -> pd.DataFrame:
 
     df['text'] = df['text'].apply(clean_text)
     df = df[df['text'].str.strip() != '']
+
+    df['username'] = df['username'].astype(str).str.lower().str.strip()
     
     return df
