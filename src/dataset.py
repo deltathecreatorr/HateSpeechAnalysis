@@ -41,7 +41,7 @@ def getTwitterDataframe(filepath: str, search_query: str, max_tweets: int = 5000
     
     client = Client("en-US")
     file_exists = os.path.isfile(filepath)
-    headers = ['tweet_id', 'user_id', 'username', 'text', 'created_at', 'retweets', 'likes', 'mentions', 'retweeted_user', 'quoted_user', 'followers', 'account_created', 'has_media']
+    headers = ['tweet_id', 'user_id', 'username', 'text', 'created_at', 'retweets', 'likes', 'mentions', 'retweeted_user', 'quoted_user', 'followers', 'account_created', 'has_media', 'reply_to', 'hashtags']
 
     async def main():
         try:
@@ -54,8 +54,12 @@ def getTwitterDataframe(filepath: str, search_query: str, max_tweets: int = 5000
                 cookies_file = "cookies.json"
             )
             client.save_cookies("cookies.json")
-
-        tweets = await client.search_tweet(search_query, "Latest", count=50)
+        
+        encoded_query = search_query.replace(" ", "%20").replace(":", "%3A").replace("\"", "%22")
+        debug_url = f"https://x.com/search?q={encoded_query}&f=live"
+        print(f"DEBUG: Try opening this in your browser: {debug_url}")
+        tweets = await client.search_tweet(search_query, "Latest", count=100)
+        
 
         news_indicators = ['news', 'breaking', 'report', 'official', 'press', 'daily', 'wire', 'gazette', 'times', 'journal']
 
@@ -77,18 +81,28 @@ def getTwitterDataframe(filepath: str, search_query: str, max_tweets: int = 5000
 
                     if tweet.text.startswith("BREAKING:") or tweet.text.startswith("REPORT:") or tweet.text.startswith("LIVE"):
                         continue
+
+                    if len(tweet.text.split()) < 4:
+                        continue
                     
                     entities = getattr(tweet, 'entities', {})
                     mentions_list = entities.get('user_mentions', [])
-
+                    
                     retweeted_username = ""
-                    if hasattr(tweet, 'retweeted_tweet') and tweet.retweeted_tweet:
-                        retweeted_username = tweet.retweeted_tweet.user.screen_name
+                    try:
+                        if hasattr(tweet, 'retweeted_tweet') and tweet.retweeted_tweet:
+                            retweeted_username = tweet.retweeted_tweet.user.screen_name
+                    except (KeyError, AttributeError, Exception):
+                        retweeted_username = "hidden_or_suspended"
                     
                     quoted_username = ""
-                    if hasattr(tweet, 'quote') and tweet.quote:
-                        quoted_username = tweet.quote.user.screen_name
+                    try:
+                        if hasattr(tweet, 'quote') and tweet.quote:
+                            quoted_username = tweet.quote.user.screen_name
+                    except (KeyError, AttributeError, Exception):
+                        quoted_username = "hidden_or_suspended"
 
+                    reply_to_user = getattr(tweet, 'in_reply_to_screen_name', "")
                     writer.writerow({
                         'tweet_id': tweet.id,
                         'user_id': tweet.user.id,
@@ -102,14 +116,16 @@ def getTwitterDataframe(filepath: str, search_query: str, max_tweets: int = 5000
                         'quoted_user': quoted_username,
                         'followers': tweet.user.followers_count,
                         'account_created': tweet.user.created_at,
-                        'has_media': 1 if getattr(tweet, 'media', None) else 0
+                        'has_media': 1 if getattr(tweet, 'media', None) else 0,
+                        'reply_to': reply_to_user,
+                        'hashtags': [h['text'] for h in entities.get('hashtags', [])]
                     })
                     count += 1
 
                 if count >= max_tweets:
                     break
 
-                await asyncio.sleep(5)
+                await asyncio.sleep(8)
                 tweets = await tweets.next()
             
         print(f"Data has been successfully written to {filepath}")
@@ -118,7 +134,7 @@ def getTwitterDataframe(filepath: str, search_query: str, max_tweets: int = 5000
 
 def createTwitterDataset():
     """"""
-    base_keywords = ["Israel", "Palestine", "Gaza", "Hamas", "IDF", "Zionism", "Netanyahu", "West Bank", "Anti-Semitism", "Anti-Semitic", "Genocide", "Occupation", "Terrorism", "Apartheid", "Resistance", "Settlers", "Retaliation", "War Crimes", "#FreePalestine", "#StandWithIsrael", "GazaUnderAttack", "IsraelUnderAttack"]
+    base_keywords = ["Israel", "Palestine", "Gaza", "Hamas"]
     base_query = " OR ".join(base_keywords)
 
     specific_keywords_dict = {
@@ -137,23 +153,24 @@ def createTwitterDataset():
         "Doha_Attack": {"since":"2025-09-08", "until":"2025-09-14"}
     }
 
-    tweet_count = 0
     for event, keywords in specific_keywords_dict.items():
         before_date = event_dates[event]["since"]
         after_start = (pd.to_datetime(before_date) + pd.Timedelta(days=1)).strftime('%Y-%m-%d')
         until_date = event_dates[event]["until"]
 
-        baseline_query = f"({base_query}) since:{before_date} until:{after_start} lang:en (filter:replies OR filter:quotes)"
+        baseline_query = f"({base_query}) since:{before_date} until:{after_start} lang:en"
         print(f"--- Scraping BASELINE for {event} ---")
         getTwitterDataframe(f"dataset/twitter_{event}_BASELINE.csv", baseline_query, max_tweets=1000)
 
         event_query_str = " OR ".join([f'"{k}"' if " " in k else k for k in keywords])
-        event_query = f"({base_query} OR {event_query_str}) since:{after_start} until:{until_date} lang:en (filter:replies OR filter:quotes)"
-    
+        event_query = f"({base_query} OR {event_query_str}) since:{after_start} until:{until_date} lang:en"
+
         print(f"--- Scraping EVENT data for {event} ---")
         getTwitterDataframe(f"dataset/twitter_{event}_EVENT.csv", event_query, max_tweets=2000)
 
-        print(f"Finished collecting tweets for {event}. Total tweets collected so far: {tweet_count}")
+        print(f"Finished collecting tweets for {event}")
+        time.sleep(400)
+
     
 
 if __name__ == "__main__":
