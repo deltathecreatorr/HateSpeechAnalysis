@@ -1,0 +1,172 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd"><key id="d1" for="edge" attr.name="weight" attr.type="float"/>
+<key id="d0" for="node" attr.name="sentiment" attr.type="double"/>
+<graph edgedefault="undirected"><node id="alastairmcinty2">
+  <data key="d0">-0.8659999999999999</data>
+</node>
+<node id="bygeorge1984">
+  <data key="d0">-0.9366</data>
+</node>
+<node id="catseye33">
+  <data key="d0">-0.5679</data>
+</node>
+<node id="donnymack666">
+  <data key="d0">-0.5499</data>
+</node>
+<node id="gregorylbaker3">
+  <data key="d0">-0.5696</data>
+</node>
+<node id="j40021184">
+  <data key="d0">-0.8372999999999999</data>
+</node>
+<node id="jameshafizwilde">
+  <data key="d0">-0.4404</data>
+</node>
+<node id="jewishwarrior13">
+  <data key="d0">0.7902</data>
+</node>
+<node id="lil_rogers">
+  <data key="d0">0.4404</data>
+</node>
+<node id="malcolm_az">
+  <data key="d0">-0.8807</data>
+</node>
+<node id="oneleftshoe">
+  <data key="d0">-0.25</data>
+</node>
+<node id="ramidorot">
+  <data key="d0">0.4404</data>
+</node>
+<node id="saraswhite002">
+  <data key="d0">-0.9194</data>
+</node>
+<node id="segucat">
+  <data key="d0">-0.9762</data>
+</node>
+<node id="shailendra_007_">
+  <data key="d0">-0.5994</data>
+</node>
+<node id="tempe_tweeter">
+  <data key="d0">-0.8171</data>
+</node>
+<node id="thedean2021">
+  <data key="d0">0.6908</data>
+</node>
+<node id="thenewliberal16">
+  <data key="d0">-0.7923</data>
+</node>
+<edge source="alastairmcinty2" target="bygeorge1984">
+  <data key="d1">0.09785047307733515</data>
+</edge>
+<edge source="alastairmcinty2" target="jewishwarrior13">
+  <data key="d1">0.03610929837334768</data>
+</edge>
+<edge source="alastairmcinty2" target="oneleftshoe">
+  <data key="d1">0.0563573359711555</data>
+</edge>
+<edge source="alastairmcinty2" target="saraswhite002">
+  <data key="d1">0.14255720522560134</data>
+</edge>
+<edge source="alastairmcinty2" target="thenewliberal16">
+  <data key="d1">0.037604446531753294</data>
+</edge>
+<edge source="bygeorge1984" target="donnymack666">
+  <data key="d1">0.28159972147046036</data>
+</edge>
+<edge source="bygeorge1984" target="tempe_tweeter">
+  <data key="d1">0.2300405979737583</data>
+</edge>
+<edge source="catseye33" target="malcolm_az">
+  <data key="d1">0.1082827115458237</data>
+</edge>
+<edge source="catseye33" target="thenewliberal16">
+  <data key="d1">0.06610657406980457</data>
+</edge>
+<edge source="donnymack666" target="gregorylbaker3">
+  <data key="d1">0.08584596592260756</data>
+</edge>
+<edge source="donnymack666" target="jewishwarrior13">
+  <data key="d1">0.06404679082187922</data>
+</edge>
+<edge source="donnymack666" target="tempe_tweeter">
+  <data key="d1">0.08474190584034844</data>
+</edge>
+<edge source="donnymack666" target="thedean2021">
+  <data key="d1">0.1003594214275772</data>
+</edge>
+<edge source="gregorylbaker3" target="jewishwarrior13">
+  <data key="d1">0.05300188372624129</data>
+</edge>
+<edge source="gregorylbaker3" target="oneleftshoe">
+  <data key="d1">0.08272232092076987</data>
+</edge>
+<edge source="gregorylbaker3" target="ramidorot">
+  <data key="d1">0.06461002645060784</data>
+</edge>
+<edge source="gregorylbaker3" target="segucat">
+  <data key="d1">0.04770275736509096</data>
+</edge>
+<edge source="gregorylbaker3" target="shailendra_007_">
+  <data key="d1">0.07023531328455254</data>
+</edge>
+<edge source="j40021184" target="jewishwarrior13">
+  <data key="d1">0.05769899845371694</data>
+</edge>
+<edge source="j40021184" target="malcolm_az">
+  <data key="d1">0.07984796819769154</data>
+</edge>
+<edge source="j40021184" target="shailendra_007_">
+  <data key="d1">0.1006431991153761</data>
+</edge>
+<edge source="jameshafizwilde" target="saraswhite002">
+  <data key="d1">0.19539245993452783</data>
+</edge>
+<edge source="jewishwarrior13" target="oneleftshoe">
+  <data key="d1">0.06171634423787938</data>
+</edge>
+<edge source="jewishwarrior13" target="thenewliberal16">
+  <data key="d1">0.04118024613896653</data>
+</edge>
+<edge source="lil_rogers" target="oneleftshoe">
+  <data key="d1">0.1378749368966379</data>
+</edge>
+<edge source="lil_rogers" target="segucat">
+  <data key="d1">0.07950713408787098</data>
+</edge>
+<edge source="lil_rogers" target="tempe_tweeter">
+  <data key="d1">0.2609606381518754</data>
+</edge>
+<edge source="malcolm_az" target="segucat">
+  <data key="d1">0.037416625803612595</data>
+</edge>
+<edge source="malcolm_az" target="shailendra_007_">
+  <data key="d1">0.036257562571640034</data>
+</edge>
+<edge source="malcolm_az" target="thenewliberal16">
+  <data key="d1">0.0432944865519001</data>
+</edge>
+<edge source="oneleftshoe" target="shailendra_007_">
+  <data key="d1">0.06634762534432515</data>
+</edge>
+<edge source="ramidorot" target="segucat">
+  <data key="d1">0.04338399876503423</data>
+</edge>
+<edge source="saraswhite002" target="segucat">
+  <data key="d1">0.21075716451672333</data>
+</edge>
+<edge source="saraswhite002" target="thenewliberal16">
+  <data key="d1">0.08128849167014669</data>
+</edge>
+<edge source="segucat" target="shailendra_007_">
+  <data key="d1">0.07652020974077009</data>
+</edge>
+<edge source="segucat" target="tempe_tweeter">
+  <data key="d1">0.04708925491737001</data>
+</edge>
+<edge source="segucat" target="thenewliberal16">
+  <data key="d1">0.03706304666355211</data>
+</edge>
+<edge source="shailendra_007_" target="thenewliberal16">
+  <data key="d1">0.08854093923270022</data>
+</edge>
+</graph></graphml>

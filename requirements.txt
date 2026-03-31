@@ -6,3 +6,6 @@ nltk
 scipy
 scikit-learn
 networkx
+matplotlib
+leidenalg
+igraph
