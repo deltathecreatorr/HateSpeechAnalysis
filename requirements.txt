@@ -4,3 +4,5 @@ asyncio
 dotenv
 nltk
 scipy
+scikit-learn
+networkx
