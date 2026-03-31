@@ -1,1 +1,4 @@
+auth: copy and paste value here
+ct0: copy and paste value here
+
 Create this file for twikit to store cookies to stop repeated logins, nothing has to be inside this file
