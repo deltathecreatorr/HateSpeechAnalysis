@@ -5,7 +5,8 @@ from scipy import stats
 
 def analyse_sentiment_changes() -> list[list]:
     """
-    Analyses the sentiment changes from before the event and during/after it
+    Analyses the sentiment changes from before the event and during/after it.
+    Conducts a t-test to determine if the change is significant enough to be a real shift in sentiment or the communities.
     
     Arguments:
         None
@@ -13,19 +14,24 @@ def analyse_sentiment_changes() -> list[list]:
         A 2D list of the sentiment changes for each platform and event
     """
     sentiment_changes = []
+
     for platform in ['reddit', 'twitter']:
         for keys, _ in event_dates.items():
+
             baseline_path = f"dataset/{platform}_{keys}_BASELINE_VADER.csv"
             event_path = f"dataset/{platform}_{keys}_EVENT_VADER.csv"
 
+            #Checking if the both the baseline and event csvs exist
             if os.path.exists(baseline_path) and os.path.exists(event_path):
                 baseline_df = pd.read_csv(baseline_path)
                 event_df = pd.read_csv(event_path)
 
+                #Calculate mean sentiment scores before and after the event
                 b_mean = baseline_df['sentiment_score'].mean()
                 e_mean = event_df['sentiment_score'].mean()
                 change = e_mean - b_mean
 
+                #Perform a t-test to check if the change in sentiment is significant
                 t_stat, p_val = stats.ttest_ind(
                     baseline_df['sentiment_score'],
                     event_df['sentiment_score'],
