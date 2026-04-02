@@ -1,0 +1,283 @@
+LDA Topic Modeling for ICC_Arrest
+
+====================
+Topic Analysis: dataset/ICC_Arrest_Topics.txt
+====================
+
+Community 0 - Top Topics:
+  Topic 1: history, good, person, ratio, starting, mad, moral, war, urban, warfare
+  Topic 2: idea, genocide, ceasefire, children, decision, died, mothers, veto, tirelessly, working
+  Topic 3: favor, hamas, israel, aid, gaza, bs, building, inside, ground, blew
+  Topic 4: blocks, innocent, lies, help, food, propaganda, medicine, water, israel, hamas
+  Topic 5: ground, building, inside, hamas, gaza, israel, aid, favor, make, ukraine
+
+Community 1 - Top Topics:
+  Topic 1: west, like, palestinians, segal, openly, terrorists, coward, hamas, israeli, responsible
+  Topic 2: west, like, palestinians, segal, openly, terrorists, coward, hamas, israeli, responsible
+  Topic 3: thugs, racist, palestine, rapists, settlers, thieves, thing, serve, usurping, israeli
+  Topic 4: usurping, thing, thugs, settlers, thieves, israeli, responsible, coward, terrorists, hamas
+  Topic 5: west, like, palestinians, raz, omer, segal, pogroms, israeli, holocaust, scholar
+
+Community 2 - Top Topics:
+  Topic 1: curds, cuts, defends, bombs, arms, rest, million, water, world, israel
+  Topic 2: generates, dollars, criminals, place, ring, tentacles, paedophile, trafficking, year, world
+  Topic 3: curds, cuts, defends, bombs, arms, rest, million, water, world, israel
+  Topic 4: curds, cuts, crickets, bombs, arms, defends, million, turkey, rest, water
+  Topic 5: curds, cuts, defends, bombs, arms, rest, million, water, world, israel
+
+====================
+Topic Analysis: dataset/ICC_Arrest_Topics.txt
+====================
+
+Community 0 - Top Topics:
+  Topic 1: jill, eschatology, disastrous, takes, iran, middle, war, true, genocide, israel
+  Topic 2: academic, circles, regarding, peoples, stopped, nations, israel, people, genocide, movement
+  Topic 3: jill, takes, disastrous, eschatology, iran, middle, war, true, genocide, israel
+  Topic 4: using, service, sam, suppress, israel, true, air, eschatology, takes, disastrous
+  Topic 5: want, genocide, complicit, crimes, gentle, jill, polite, war, way, reminder
+
+Community 1 - Top Topics:
+  Topic 1: leaders, israël, actually, like, netanyahu, time, terrorists, deserves, hague, tried
+  Topic 2: churches, scum, refresh, page, muslims, lol, main, mosques, isis, ziio
+  Topic 3: leaders, israël, actually, like, netanyahu, time, terrorists, hague, deserves, tried
+  Topic 4: hague, tried, terrorists, time, like, israël, leadership, leaders, actually, netanyahu
+  Topic 5: concrete, weight, rubble, resilience, rest, member, team, stranded, tasked, imagine
+
+Community 2 - Top Topics:
+  Topic 1: israel, killing, issues, antisemitism, antisemite, answer, actions, stand, questions, thousand
+  Topic 2: palestines, rains, homes, bombs, opposed, fully, occupied, women, israel, children
+  Topic 3: children, make, innocent, genocidal, hamas, helped, mean, sound, palestines, words
+  Topic 4: words, rains, homes, bombs, opposed, fully, occupied, women, israel, children
+  Topic 5: questions, children, israel, homes, fully, bombs, occupied, rains, opposed, women
+
+====================
+Topic Analysis: dataset/ICC_Arrest_Topics.txt
+====================
+
+Community 0 - Top Topics:
+  Topic 1: believe, israelis, know, said, israel, palestine, solution, subject, people, jews
+  Topic 2: gaza, jews, palestine, west, arabs, arab, israel, palestinians, identity, palestinian
+  Topic 3: total, point, palestine, israelis, steal, agree, israel, land, jewish, palestinian
+  Topic 4: point, hamas, arab, shots, palestine, people, occupation, forces, land, israeli
+  Topic 5: trying, na, judaism, war, israel, americans, right, absolutely, yes, jews
+
+Community 1 - Top Topics:
+  Topic 1: weapons, left, aid, drones, conflict, far, war, russia, ukraine, israel
+  Topic 2: way, iran, like, refused, hamas, time, germany, ukraine, israel, russia
+  Topic 3: syria, defend, hope, absolute, lot, iran, war, israel, ukraine, russia
+  Topic 4: headed, fucking, help, putin, small, ukraine, entire, happening, american, point
+  Topic 5: oh, ships, operate, left, russia, sure, opinions, mister, insane, russian
+
+Community 2 - Top Topics:
+  Topic 1: gt, like, people, war, state, gaza, peace, palestinian, palestinians, israel
+  Topic 2: idf, palestinians, reason, israelis, say, israeli, israel, think, peace, children
+  Topic 3: occupied, hamas, treat, palestinians, people, israel, want, west, jordan, bank
+  Topic 4: use, modern, internationally, recent, gave, israelis, occupied, palestine, say, state
+  Topic 5: claims, israel, dna, said, gaza, land, netanyahu, killed, peace, hamas
+
+Community 3 - Top Topics:
+  Topic 1: hamas, like, say, idiots, make, dead, power, heard, israel, sure
+  Topic 2: exhibiting, erect, government, alive, case, lies, guy, getting, look, say
+  Topic 3: torah, dozen, yes, literally, war, person, say, took, people, make
+  Topic 4: mad, article, fan, religious, step, bible, studying, yes, going, look
+  Topic 5: agree, truth, pay, guys, make, yes, like, government, mad, sure
+
+Community 4 - Top Topics:
+  Topic 1: government, fuck, like, zionists, platform, names, men, white, food, people
+  Topic 2: let, point, face, black, mind, vote, following, common, know, people
+  Topic 3: need, minister, men, needs, stolen, come, live, wrong, know, people
+  Topic 4: power, away, guilt, years, reddit, beaten, happening, shit, problem, people
+  Topic 5: kidnapped, hostage, country, know, really, hostages, october, like, white, people
+
+Community 5 - Top Topics:
+  Topic 1: hamas, look, mean, ceasefire, claim, work, really, holding, joke, hostages
+  Topic 2: permanent, usa, world, working, release, million, need, israel, ceasefire, hostages
+  Topic 3: unconditional, release, returning, gazan, think, israel, hamas, got, idf, hostages
+  Topic 4: heads, idf, hostage, need, resolution, israel, release, hamas, hostages, ceasefire
+  Topic 5: going, civilians, left, alive, war, deal, idf, hostages, israel, gaza
+
+Community 6 - Top Topics:
+  Topic 1: literally, trade, erdogan, weapons, ethnostate, lol, palestinians, aid, decades, israel
+  Topic 2: good, organization, war, hamas, like, ukraine, aid, support, going, israel
+  Topic 3: similar, think, want, stop, written, military, terrorists, going, israel, way
+  Topic 4: start, people, proof, antisemitic, trucks, nuclear, turkey, going, aid, israel
+  Topic 5: terrorists, aid, live, given, child, involved, hours, going, dont, israel
+
+Community 7 - Top Topics:
+  Topic 1: secret, russians, really, world, happened, israel, media, yes, gt, point
+  Topic 2: israel, camp, action, jews, thing, western, fucking, problem, right, gt
+  Topic 3: chose, jewish, settled, right, land, gt, like, people, palestinians, jews
+  Topic 4: means, stalin, sentence, brothers, day, palestine, people, point, gt, right
+  Topic 5: white, kill, comment, make, need, actually, god, article, like, bless
+
+Community 8 - Top Topics:
+  Topic 1: consider, war, hitler, hamas, people, possible, source, new, genocide, like
+  Topic 2: ukraine, man, life, people, news, genocide, make, source, thing, new
+  Topic 3: officer, dude, great, source, post, palestinians, evidence, genocide, picture, word
+  Topic 4: people, really, land, dude, wars, telling, sentence, stop, genocide, source
+  Topic 5: possible, news, tell, slavery, fox, daemon, really, iran, free, interesting
+
+Community 9 - Top Topics:
+  Topic 1: civilians, people, great, mean, release, like, palestinians, gaza, israel, hamas
+  Topic 2: supporting, like, killed, gt, following, stop, getting, people, israel, hamas
+  Topic 3: protect, pa, news, people, prices, ceasefire, think, gt, hamas, israel
+  Topic 4: bibi, gaza, gazans, lot, terrorist, palestinians, israel, support, qatar, hamas
+  Topic 5: power, israelis, important, claim, israel, israeli, title, gaza, iran, hamas
+
+Community 10 - Top Topics:
+  Topic 1: data, cables, cutting, nato, stop, long, article, campus, palestinians, actually
+  Topic 2: right, yapping, deport, citizens, playing, sent, say, got, actually, easy
+  Topic 3: spend, live, ceased, long, big, proceed, got, opinion, good, actually
+  Topic 4: based, crying, link, started, zombie, oppressed, good, actually, oppression, got
+  Topic 5: getting, like, bad, fuck, um, good, got, possibly, guys, actually
+
+Community 11 - Top Topics:
+  Topic 1: qasams, firing, safer, going, read, ceasefires, notes, clearly, ago, years
+  Topic 2: like, know, palestinians, america, nethanyahu, years, turkey, point, saying, true
+  Topic 3: good, roll, permanently, solution, movement, known, long, intelligent, response, let
+  Topic 4: generation, say, hypocrisy, generations, sources, let, op, years, wants, post
+  Topic 5: uranium, love, nazis, fighting, years, palestains, centuries, let, times, replaced
+
+Community 12 - Top Topics:
+  Topic 1: heals, allah, bad, asshole, west, break, ride, smoke, guy, analogy
+  Topic 2: people, yeah, wan, na, guy, life, world, leave, house, rest
+  Topic 3: white, hamas, history, quite, finally, fucking, israel, time, world, agree
+  Topic 4: campus, ca, bully, america, world, people, evidence, country, time, tell
+  Topic 5: know, ellie, trying, hamas, news, moral, small, people, sources, world
+
+Community 13 - Top Topics:
+  Topic 1: million, incentive, sound, real, sounds, jerks, depraved, absolutely, job, like
+  Topic 2: ways, continue, came, media, tottenham, rangers, ajax, people, used, like
+  Topic 3: maqam, non, info, existent, totally, comments, states, ago, like, implemented
+  Topic 4: language, things, word, noggin, little, limit, deputy, falling, studying, like
+  Topic 5: critical, laws, shit, sudden, hiding, basement, son, lebanese, billionaire, like
+
+Community 14 - Top Topics:
+  Topic 1: impact, conflict, israel, pig, hate, police, people, long, matter, think
+  Topic 2: envy, dead, say, people, mean, think, look, yep, brave, israel
+  Topic 3: isnt, dying, want, ca, lower, nope, hindsight, problem, wrong, think
+  Topic 4: wears, hostile, unstable, million, spot, btw, arab, זין, citation, think
+  Topic 5: naive, lesson, thanks, second, identity, paragraph, century, lol, people, think
+
+Community 15 - Top Topics:
+  Topic 1: violation, law, original, built, remove, return, ukraine, success, man, defeating
+  Topic 2: proposing, blockade, exactly, prefer, defeat, war, going, syrian, know, want
+  Topic 3: seen, civil, documentary, lord, instigating, seconds, lebanon, war, goodluck, want
+  Topic 4: world, actor, rational, dance, aggressive, negotiations, post, lukewarm, plan, war
+  Topic 5: months, question, costing, sense, considering, crime, punishment, collective, lol, war
+
+Community 16 - Top Topics:
+  Topic 1: pick, remember, body, literally, territory, people, expected, local, israel, gaza
+  Topic 2: wanted, words, party, voting, minorities, effectively, fair, said, israel, gaza
+  Topic 3: gaza, dna, institution, edit, want, speech, working, following, said, war
+  Topic 4: kurds, officially, family, israel, gaza, jew, love, sending, strength, american
+  Topic 5: population, argument, kushner, mention, oh, israel, ur, yep, gaza, egypt
+
+Community 17 - Top Topics:
+  Topic 1: say, point, world, think, need, people, elected, got, certainty, trump
+  Topic 2: leftists, ago, shred, awareness, long, fake, better, trump, musk, opinion
+  Topic 3: comprehension, reading, questioning, people, trump, power, opinion, kushner, musk, israel
+  Topic 4: bravo, debate, ridicolous, course, specific, know, criteria, impossible, half, little
+  Topic 5: going, bought, left, pardons, loves, smart, discover, wo, ok, trump
+
+====================
+Topic Analysis: dataset/ICC_Arrest_Topics.txt
+====================
+
+Community 0 - Top Topics:
+  Topic 1: let, fuck, feel, say, iran, going, true, really, good, time
+  Topic 2: join, rules, good, read, like, thanks, war, world, got, right
+  Topic 3: tell, ban, result, white, terrorist, multiple, think, care, israel, people
+  Topic 4: said, genocide, war, criminals, zionist, hope, point, oh, think, way
+  Topic 5: article, like, action, bot, cops, long, looking, actually, icc, fucking
+
+Community 1 - Top Topics:
+  Topic 1: israeli, peace, want, genocide, palestinians, gaza, like, hamas, people, israel
+  Topic 2: day, east, people, right, arab, exactly, region, said, middle, lol
+  Topic 3: occupation, world, ethnic, settlements, palestinian, muslims, palestinians, bank, west, israel
+  Topic 4: like, palestinian, really, know, point, palestinians, people, israel, jews, land
+  Topic 5: rights, arab, palestine, country, jewish, arabs, war, state, jews, israel
+
+Community 2 - Top Topics:
+  Topic 1: civilians, government, israeli, evidence, got, gaza, people, israel, children, hamas
+  Topic 2: war, military, yes, trucks, people, read, israel, aid, gaza, hamas
+  Topic 3: people, killed, sure, say, israel, war, thing, civilian, civilians, hamas
+  Topic 4: netanyahu, right, believe, hamas, like, genocide, war, world, people, israel
+  Topic 5: hostages, answer, military, know, country, makes, muslim, palestinians, think, israel
+
+Community 3 - Top Topics:
+  Topic 1: genocide, want, gaza, gif, big, like, says, people, netanyahu, really
+  Topic 2: mean, thanks, ok, dumb, media, point, religion, jewish, yeah, like
+  Topic 3: evidence, hope, palestinians, president, think, israel, look, make, death, people
+  Topic 4: face, article, israeli, probably, trump, talking, guy, people, like, know
+  Topic 5: antisemitism, comment, lot, blame, nazi, end, people, actual, like, peace
+
+Community 4 - Top Topics:
+  Topic 1: mean, people, use, years, netanyahu, icc, yes, article, israel, gaza
+  Topic 2: amp, palestine, jurisdiction, country, like, court, countries, israel, arrest, icc
+  Topic 3: probably, crimes, going, words, president, argument, icc, history, exactly, war
+  Topic 4: good, israel, death, post, dead, putin, icc, hamas, arrest, warrant
+  Topic 5: make, trump, palestinian, think, people, jews, jewish, genocide, right, israel
+
+Community 5 - Top Topics:
+  Topic 1: gt, shit, country, trying, like, ukraine, india, war, putin, russia
+  Topic 2: think, people, past, usa, china, planes, ukraine, israel, right, russia
+  Topic 3: powerful, china, maintain, russian, realize, ukraine, need, russia, oil, india
+  Topic 4: support, nk, use, reason, likely, need, israel, russian, russia, ukraine
+  Topic 5: icc, fighting, small, conflict, know, time, really, said, israel, russia
+
+Community 6 - Top Topics:
+  Topic 1: crimes, like, netanyahu, war, people, gaza, international, law, gt, israel
+  Topic 2: lebanon, land, palestinian, people, palestine, arabs, israel, palestinians, hamas, gt
+  Topic 3: believe, point, rest, yeah, law, make, gt, amp, actually, think
+  Topic 4: use, attack, details, argument, taken, action, moderation, policy, better, rule
+  Topic 5: people, liberal, settlements, israeli, israel, actual, genocide, zionists, like, gt
+
+Community 7 - Top Topics:
+  Topic 1: say, people, decades, history, result, zionist, israel, subreddit, genocide, shame
+  Topic 2: people, war, hasbara, saying, know, op, like, genocide, evil, real
+  Topic 3: killed, hamas, good, government, gaza, people, actually, think, israel, genocide
+  Topic 4: israelis, course, make, children, needs, exactly, genocide, israel, war, yeah
+  Topic 5: sure, antisemitism, real, cleansing, ethnic, genocide, wo, literally, like, true
+
+Community 8 - Top Topics:
+  Topic 1: god, say, muslims, happened, judaism, islam, hamas, like, people, jews
+  Topic 2: world, tell, islam, look, israel, jews, history, think, read, saying
+  Topic 3: lot, human, know, israel, group, muslim, muslims, jewish, jews, race
+  Topic 4: land, israel, ca, said, hate, good, muslims, jews, antisemitism, people
+  Topic 5: true, idea, white, conflict, israel, agree, world, help, arabs, sure
+
+Community 9 - Top Topics:
+  Topic 1: iran, time, idf, sure, gaza, people, good, israel, hezbollah, hamas
+  Topic 2: lebanon, read, exactly, work, know, think, idf, israel, hezbollah, terrorists
+  Topic 3: idf, story, members, invasion, way, israel, like, say, member, nato
+  Topic 4: war, say, new, palestinians, essentially, hezbollah, antisemitic, israel, palestinian, country
+  Topic 5: north, deep, lebanese, deal, ceasefire, country, lebanon, want, hezbollah, israel
+
+Community 10 - Top Topics:
+  Topic 1: western, support, israelis, vile, disgusting, germany, think, claim, exactly, evidence
+  Topic 2: war, post, right, hostages, evidence, israel, wrong, germany, state, yes
+  Topic 3: city, lol, palestinians, evil, axis, left, say, killing, thing, children
+  Topic 4: destruction, zionists, device, americans, filth, people, oh, sure, israel, icc
+  Topic 5: pariah, land, state, german, nazis, ask, world, video, israel, germany
+
+Community 11 - Top Topics:
+  Topic 1: saying, year, exactly, power, war, hamas, right, believe, israel, lol
+  Topic 2: make, sense, sure, lately, yeah, level, figured, good, building, source
+  Topic 3: room, sorry, things, job, oppressed, xd, damn, true, like, shit
+  Topic 4: huge, getting, kill, heading, imperialism, legend, world, yup, power, lol
+  Topic 5: fuck, got, cough, hard, really, shit, semite, antisemitic, particular, based
+
+Community 12 - Top Topics:
+  Topic 1: nukes, netherlands, ground, interestingly, druze, reason, kids, competition, zionist, think
+  Topic 2: jews, government, kill, ignorant, american, hamas, alive, day, reason, dead
+  Topic 3: fucking, children, ffs, height, moron, injured, thousands, nazis, like, dead
+  Topic 4: jews, intolerant, hamas, good, place, played, video, learned, reason, people
+  Topic 5: protests, fuck, islamophobic, figure, bad, make, incident, hope, good, reason
+
+Community 13 - Top Topics:
+  Topic 1: im, talking, gaza, palestinian, palestine, independent, proper, right, reason, dell
+  Topic 2: yeah, answer, nah, article, think, link, screenshot, wow, troll, hahaha
+  Topic 3: palestine, support, americans, native, happen, citizens, deport, related, amp, thanks
+  Topic 4: reality, truth, called, going, moment, people, amp, dell, big, stand
+  Topic 5: effort, low, damn, mind, bless, recognize, lebanon, syria, god, palestine

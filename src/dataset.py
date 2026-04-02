@@ -13,6 +13,7 @@ import time
 
 load_dotenv()
 
+#all the events and their date ranges for before and after an event.
 event_dates = {
     "October_7": {"since":"2023-10-06", "until":"2023-10-12"},
     "Al-Ahli_Hospital": {"since":"2023-10-16", "until":"2023-10-22"},
@@ -39,6 +40,7 @@ def getRedditDataframe() -> None:
 
     output_dir = 'dataset/'
 
+    #Iterate through each event and create separate CSV files for baseline and event data based on the defined date ranges.
     for event, dates in event_dates.items():
         since_dt = pd.to_datetime(dates['since'])
         event_dt = since_dt + pd.Timedelta(days=1)
@@ -71,6 +73,7 @@ def getTwitterDataset(filepath: str, search_query: str, max_tweets: int = 5000) 
     file_exists = os.path.isfile(filepath)
     headers = ['tweet_id', 'user_id', 'username', 'text', 'created_at', 'retweets', 'likes', 'mentions', 'retweeted_user', 'quoted_user', 'followers', 'account_created', 'has_media', 'reply_to', 'hashtags']
 
+    #Scrape Twitter data using TwiKit
     async def main():
         try:
             client.load_cookies("cookies.json")
@@ -88,7 +91,7 @@ def getTwitterDataset(filepath: str, search_query: str, max_tweets: int = 5000) 
         print(f"DEBUG: Try opening this in your browser: {debug_url}")
         tweets = await client.search_tweet(search_query, "Latest", count=100)
         
-
+        #Filter out any news accounts to reduce noise in the dataset.
         news_indicators = ['news', 'breaking', 'report', 'official', 'press', 'daily', 'wire', 'gazette', 'times', 'journal']
 
         with open(filepath, mode="a", encoding="utf-8", newline="") as f:
@@ -100,6 +103,7 @@ def getTwitterDataset(filepath: str, search_query: str, max_tweets: int = 5000) 
             while tweets and count < max_tweets:
                 for tweet in tweets:
                     
+                    #Apply filters to exclude news accounts, or followers with a large following
                     username_lower = tweet.user.screen_name.lower()
                     if any(indicator in username_lower for indicator in news_indicators):
                         continue
@@ -116,6 +120,7 @@ def getTwitterDataset(filepath: str, search_query: str, max_tweets: int = 5000) 
                     entities = getattr(tweet, 'entities', {})
                     mentions_list = entities.get('user_mentions', [])
                     
+                    #Handle exceptions when accessing retweeted or quoted users, may be empty due to privacy settings
                     retweeted_username = ""
                     try:
                         if hasattr(tweet, 'retweeted_tweet') and tweet.retweeted_tweet:
@@ -130,6 +135,7 @@ def getTwitterDataset(filepath: str, search_query: str, max_tweets: int = 5000) 
                     except (KeyError, AttributeError, Exception):
                         quoted_username = "hidden_or_suspended"
 
+                    #handle cases where the tweet is a reply to another user
                     reply_to_user = getattr(tweet, 'in_reply_to_screen_name', "")
                     writer.writerow({
                         'tweet_id': tweet.id,
@@ -152,7 +158,8 @@ def getTwitterDataset(filepath: str, search_query: str, max_tweets: int = 5000) 
 
                 if count >= max_tweets:
                     break
-
+                
+                #Wait to avoid rate limits, then get the next batch of tweets
                 await asyncio.sleep(8)
                 tweets = await tweets.next()
             
@@ -168,9 +175,11 @@ def createTwitterDataset() -> None:
     Returns:    
         None, but the function will create multiple CSV files in the dataset/ directory, each file will be named twitter_{event_name}_{data_type}.csv where event_name is one of the events from the
     """
+    #All keywords that are relevant for all the events in the timeline
     base_keywords = ["Israel", "Palestine", "Gaza", "Hamas"]
     base_query = " OR ".join(base_keywords)
 
+    #Specific keywords for each event to capture more relevant tweets, added onto the base query
     specific_keywords_dict = {
         "October_7": ["October 7", "Oct 7", "Al-Aqsa Flood", "Hamas attack", "Nova Festival", "hostages", "kibbutz", "incursion", "Sderot", "Be'eri", "paragliders"],
         "Al-Ahli_Hospital": ["Al-Ahli", "Baptist Hospital", "hospital bombing", "hospital strike", "Gaza hospital", "PIJ", "misfire", "failed rocket", "war crime", "massacre"],
@@ -179,6 +188,7 @@ def createTwitterDataset() -> None:
         "Doha_Attack": ["Doha", "Qatar", "targeted strike", "hotel attack", "assassination", "bombing", "Hamas leadership", "Doha explosion"]
     }
 
+    #loop through each event and create seperate datasets for the baseline and event
     for event, keywords in specific_keywords_dict.items():
         before_date = event_dates[event]["since"]
         after_start = (pd.to_datetime(before_date) + pd.Timedelta(days=1)).strftime('%Y-%m-%d')
@@ -196,12 +206,7 @@ def createTwitterDataset() -> None:
 
         print(f"Finished collecting tweets for {event}")
         time.sleep(400)
-
-def getTwitterDataframe(filepath: str) -> pd.DataFrame:
-    df = pd.read_csv(filepath, usecols = ['tweet_id', 'user_id', 'username', 'text', 'created_at', ])
-    return df
-    
-    
+ 
 if __name__ == "__main__":
     getRedditDataframe()
 

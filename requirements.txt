@@ -3,3 +3,9 @@ twikit
 asyncio
 dotenv
 nltk
+scipy
+scikit-learn
+networkx
+matplotlib
+leidenalg
+igraph
