@@ -93,6 +93,7 @@ def build_user_network(filepath: str, top_keywords: list, user_col: str = 'usern
 
     test_percentiles = np.arange(80, 99.5, 0.5)
 
+    #Grid search to find the optimal threshold for creating edges
     for percentile in test_percentiles:
         upper_indices = np.triu_indices_from(similarity_matrix, k=1)
         threshold = np.percentile(similarity_matrix[upper_indices], percentile)
@@ -186,47 +187,48 @@ def build_user_network(filepath: str, top_keywords: list, user_col: str = 'usern
         print(f"  {node}: {value:.4f}")
     return graph
 
-def analyse_topics(graph: nx.Graph, df: pd.DataFrame, user_col: str, n_topics: int = 5, min_users: int = 30) -> None:
+def analyse_topics(graph: nx.Graph, df: pd.DataFrame, user_col: str, filename: str, n_topics: int = 5, min_users: int = 30) -> None:
     """
-    Analyse the topics within each community of the user network using LDA topic modeling.
+    Analyse the topics within each community and write the results to a text file.
 
     Arguments:
         graph: the NetworkX graph object representing the user network
         df: the original DataFrame containing the cleaned text and user column.
         user_col: the name of the column containing the user identifiers
+        filename: the path to the text file where results will be saved
         n_topics: the number of topics to extract using LDA
-        min_users: the minimum number of users required to perform LDA, to filter out really small inconsequential communities.
-    Returns:
-        None, but the function will print the top keywords for each community based on LDA topic modeling.
+        min_users: the minimum number of users required to perform LDA
     """
-    
-    #Extract communities generated from Leiden
+    # Extract communities generated from Leiden
     node_data = [{'username': node, 'community': data['community']}
                  for node, data in graph.nodes(data=True)]
     community_df = pd.DataFrame(node_data)
 
-    #Re-merge the users with original raw text data
+    # Re-merge the users with original raw text data
     merged_df = pd.merge(community_df, df[[user_col, 'cleaned_text']], left_on='username', right_on=user_col)
 
-    #Iterate through echo chamber and perform LDA
-    for chamber in sorted(merged_df['community'].unique()):
-        text_data = merged_df[merged_df['community'] == chamber]['cleaned_text']
+    # Open the file in append mode to keep results from different runs, or 'w' to overwrite
+    with open(filename, 'a', encoding='utf-8') as f:
+        f.write(f"\n{'='*20}\nTopic Analysis: {filename}\n{'='*20}\n")
 
-        if len(text_data) < min_users:
-            continue
+        for chamber in sorted(merged_df['community'].unique()):
+            text_data = merged_df[merged_df['community'] == chamber]['cleaned_text']
 
-        vectoriser = TfidfVectorizer(stop_words='english', max_features=500)
-        matrix = vectoriser.fit_transform(text_data)
+            # Filter out micro-communities to eliminate insignificant context 
+            if len(text_data) < min_users:
+                continue
 
-        lda = LatentDirichletAllocation(n_components=n_topics, random_state=42)
-        lda.fit(matrix)
+            vectoriser = TfidfVectorizer(stop_words='english', max_features=500)
+            matrix = vectoriser.fit_transform(text_data)
 
-        words = vectoriser.get_feature_names_out()
-        print(f"\nCommunity {chamber} - Top Topics:")
-        for topic_index, topic in enumerate(lda.components_):
-            top_words = [words[i] for i in topic.argsort()[-10:]]
-            print(f"  Topic {topic_index + 1}: {', '.join(top_words)}")
+            lda = LatentDirichletAllocation(n_components=n_topics, random_state=42)
+            lda.fit(matrix)
 
+            words = vectoriser.get_feature_names_out()
+            f.write(f"\nCommunity {chamber} - Top Topics:\n")
+            for topic_index, topic in enumerate(lda.components_):
+                top_words = [words[i] for i in topic.argsort()[-10:]]
+                f.write(f"  Topic {topic_index + 1}: {', '.join(top_words)}\n")
 def plot_network(graph, title: str, ax):
     pos = nx.spring_layout(graph, k=0.15, iterations=50, seed=42)
     sentiments = [graph.nodes[node].get('sentiment', 0.0) for node in graph.nodes()]
@@ -259,7 +261,7 @@ def plot_network(graph, title: str, ax):
     cbar.ax.yaxis.set_tick_params(color='black')
     plt.setp(plt.getp(cbar.ax.axes, 'yticklabels'), color='black')
 
-    ax.set_title(title, fontsize=14, color='black')
+    ax.set_title(title, fontsize=20, color='black')
     ax.axis('off')
 
 #datasets that are significant enough to be plotted
@@ -344,17 +346,20 @@ for i in range(0, len(datasets_to_run), 4):
     event_group = datasets_to_run[i:i+4]
     base_name = event_group[0]['title'].replace("Twitter ", "").split("-")[0].strip().replace(" ", "_")
     
+    topics_file = f"dataset/{base_name}_Topics.txt"
+    with open(topics_file, 'w') as f: f.write(f"LDA Topic Modeling for {base_name}\n")
+
     fig, axes = plt.subplots(nrows=2, ncols=2, figsize=(20, 20))
     fig.patch.set_facecolor('white')
     
     axes = axes.flatten()
 
     for j, data in enumerate(event_group):
-        
+        print(f"Processing: {data['title']}")
         top_words = extract_words(data['filepath'], data['coverage_ratio'])
         graph = build_user_network(data['filepath'], top_words, user_col=data['user_col'])
         
-        analyse_topics(graph, pd.read_csv(data['filepath']), user_col=data['user_col'], n_topics=5)
+        analyse_topics(graph, pd.read_csv(data['filepath']), user_col=data['user_col'], n_topics=5, filename=topics_file)
         
         plot_network(graph, data['title'], axes[j])
 
